@@ -36,7 +36,7 @@
           color="#1A237E"
           class="white--text"
           width="200"
-          to="/"
+          to="/dish"
           >Dish</v-btn
         >
       </v-list-item>
