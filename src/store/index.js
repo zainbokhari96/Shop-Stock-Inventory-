@@ -33,15 +33,6 @@ export default new Vuex.Store({
         }
       }
     },
-    addNewReceivers(state, data) {
-      state.receivers.push(data);
-    },
-    addNewLnb(state, data) {
-      state.lnb.push(data);
-    },
-    addNewAcessories(state, data) {
-      state.accessories.push(data);
-    },
     saleDish(state, data) {
       for (let i = 0; i < state.dish.length; i++) {
         if (state.dish[i].category == data.category) {
@@ -69,6 +60,36 @@ export default new Vuex.Store({
           state.dishFiber[i].quantity += parseFloat(data.quantity);
         }
       }
+    },
+    addNewReceivers(state, data) {
+      state.receivers.push(data);
+    },
+    deleteReceivers(state, data) {
+      for (let i = 0; i < state.receivers.length; i++) {
+        if (state.receivers[i].category == data) {
+          state.dish.splice(i, 1);
+        }
+      }
+    },
+    saleReceivers(state, data) {
+      for (let i = 0; i < state.receivers.length; i++) {
+        if (state.receivers[i].category == data.category) {
+          state.receivers[i].quantity -= data.quantity;
+        }
+      }
+    },
+    restockReceivers(state, data) {
+      for (let i = 0; i < state.receivers.length; i++) {
+        if (state.receivers[i].category == data.category) {
+          state.receivers[i].quantity += parseFloat(data.quantity);
+        }
+      }
+    },
+    addNewLnb(state, data) {
+      state.lnb.push(data);
+    },
+    addNewAcessories(state, data) {
+      state.accessories.push(data);
     },
   },
   actions: {},

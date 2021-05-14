@@ -26,8 +26,8 @@
           <v-col
             class="d-flex justify-center"
             cols="2"
-            v-for="x in dish"
-            :key="x.brand"
+            v-for="(x,i) in dish"
+            :key="i + 'dish'"
           >
             <v-card class="mx-1" width="180" height="200" elevation="10">
               <v-card-text>
@@ -67,8 +67,8 @@
           <v-col
             class="d-flex justify-center"
             cols="2"
-            v-for="x in Fiber"
-            :key="x.category"
+            v-for="(x,i) in Fiber"
+            :key="i + 'fiber'"
           >
             <v-card class="mx-1" width="180" height="200" elevation="10">
               <v-card-text>
@@ -102,17 +102,19 @@
           <v-col
             class="d-flex justify-center"
             cols="2"
-            v-for="x in receiver"
-            :key="x"
+            v-for="(x,i) in receivers"
+            :key="i + 'reciver'"
           >
             <v-card class="mx-1" width="180" height="200" elevation="10">
               <v-card-text>
-                <div class="grey--text">Echolink</div>
-                <span class="Heading 6"><b>Info</b></span>
+                <div class="grey--text">{{ x.brand }}</div>
+                <span class="Heading 6"
+                  ><b>{{ x.category }}</b></span
+                >
                 <br />
                 <span class="grey--text">Remaining Qty:</span>
                 <br />
-                <span class="display-3 mt-n2">100</span>
+                <span class="display-3 mt-n2">{{ x.quantity }}</span>
                 <br />
                 <span class="grey--text">Pcs</span>
               </v-card-text>
@@ -137,7 +139,7 @@
           <v-col
             class="d-flex justify-center"
             cols="2"
-            v-for="x in receiver"
+            v-for="x in receivers"
             :key="x"
           >
             <v-card class="mx-1" width="180" height="200" elevation="10">
@@ -191,7 +193,7 @@
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="(saleModal = false), dishSale()">
+          <v-btn color="primary" text @click="(saleModal = false), Sale()">
             Checkout
           </v-btn>
         </v-card-actions>
@@ -212,7 +214,7 @@ export default {
       saleModal: false,
       category: "",
       quantity: "",
-      receiver: 8,
+      selectedCatergory: "",
     };
   },
   computed: {
@@ -222,14 +224,35 @@ export default {
     Fiber() {
       return this.$store.state.dishFiber;
     },
+    receivers() {
+      return this.$store.state.receivers;
+    },
   },
   methods: {
-    dishSale() {
-      let dish = {
-        category: this.category,
-        quantity: this.quantity,
-      };
-      this.$store.commit("saleDish", dish);
+    Sale() {
+      if (this.selectedCatergory == "MetalDish") {
+        let dish = {
+          category: this.category,
+          quantity: this.quantity,
+        };
+        this.$store.commit("saleDish", dish);
+      }
+      if (this.selectedCatergory == "FiberDish") {
+        {
+          let dish = {
+            category: this.category,
+            quantity: this.quantity,
+          };
+          this.$store.commit("saleDish", dish);
+        }
+      }
+      if (this.selectedCatergory == "Receiver") {
+        let receiver = {
+          category: this.category,
+          quantity: this.quantity,
+        };
+        this.$store.commit("saleReceivers", receiver);
+      }
     },
   },
 };

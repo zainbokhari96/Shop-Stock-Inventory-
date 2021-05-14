@@ -45,7 +45,7 @@
           color="#1A237E"
           class="white--text"
           width="200"
-          to="/"
+          to="/receivers"
           >Reciver</v-btn
         >
       </v-list-item>
