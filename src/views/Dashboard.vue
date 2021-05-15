@@ -26,7 +26,7 @@
           <v-col
             class="d-flex justify-center"
             cols="2"
-            v-for="(x,i) in dish"
+            v-for="(x, i) in dish"
             :key="i + 'dish'"
           >
             <v-card class="mx-1" width="180" height="200" elevation="10">
@@ -46,7 +46,11 @@
                 <v-btn
                   text
                   color="blue darken-4"
-                  @click="(saleModal = true), (category = x.category)"
+                  @click="
+                    (saleModal = true),
+                      (category = x.category),
+                      (selectedCatergory = 'MetalDish')
+                  "
                 >
                   Sale
                 </v-btn>
@@ -67,7 +71,7 @@
           <v-col
             class="d-flex justify-center"
             cols="2"
-            v-for="(x,i) in Fiber"
+            v-for="(x, i) in Fiber"
             :key="i + 'fiber'"
           >
             <v-card class="mx-1" width="180" height="200" elevation="10">
@@ -84,7 +88,15 @@
                 <span class="grey--text">Pcs</span>
               </v-card-text>
               <v-card-actions class="d-flex justify-center mt-n6">
-                <v-btn text color="blue darken-4" @click="saleModal = true">
+                <v-btn
+                  text
+                  color="blue darken-4"
+                  @click="
+                    (saleModal = true),
+                      (category = x.category),
+                      (selectedCatergory = 'FiberDish')
+                  "
+                >
                   Sale
                 </v-btn>
               </v-card-actions>
@@ -102,8 +114,8 @@
           <v-col
             class="d-flex justify-center"
             cols="2"
-            v-for="(x,i) in receivers"
-            :key="i + 'reciver'"
+            v-for="(x, i) in receivers"
+            :key="i + 'receiver'"
           >
             <v-card class="mx-1" width="180" height="200" elevation="10">
               <v-card-text>
@@ -119,7 +131,15 @@
                 <span class="grey--text">Pcs</span>
               </v-card-text>
               <v-card-actions class="d-flex justify-center mt-n6">
-                <v-btn text color="blue darken-4" @click="saleModal = true">
+                <v-btn
+                  text
+                  color="blue darken-4"
+                  @click="
+                    (saleModal = true),
+                      (category = x.category),
+                      (selectedCatergory = 'Receiver')
+                  "
+                >
                   Sale
                 </v-btn>
               </v-card-actions>
@@ -139,22 +159,77 @@
           <v-col
             class="d-flex justify-center"
             cols="2"
-            v-for="x in receivers"
-            :key="x"
+            v-for="(x, i) in lnb"
+            :key="i + 'lnb'"
           >
             <v-card class="mx-1" width="180" height="200" elevation="10">
               <v-card-text>
-                <div class="grey--text">Echolink</div>
-                <span class="Heading 6"><b>Single Pin</b></span>
+                <div class="grey--text">{{ x.brand }}</div>
+                <span class="Heading 6"
+                  ><b>{{ x.category }}</b></span
+                >
                 <br />
                 <span class="grey--text">Remaining Qty:</span>
                 <br />
-                <span class="display-3 mt-n2">100</span>
+                <span class="display-3 mt-n2">{{ x.quantity }}</span>
                 <br />
                 <span class="grey--text">Pcs</span>
               </v-card-text>
               <v-card-actions class="d-flex justify-center mt-n6">
-                <v-btn text color="blue darken-4" @click="saleModal = true">
+                <v-btn
+                  text
+                  color="blue darken-4"
+                  @click="
+                    (saleModal = true),
+                      (category = x.category),
+                      (selectedCatergory = 'LNB')
+                  "
+                >
+                  Sale
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+        <!-- Accessories's -->
+        <v-row>
+          <v-col
+            class="d-flex justify-center text--primary"
+            style="background: #cddc39"
+          >
+            Accessories:</v-col
+          >
+        </v-row>
+        <v-row>
+          <v-col
+            class="d-flex justify-center"
+            cols="2"
+            v-for="(x, i) in Accessories"
+            :key="i + 'accessories'"
+          >
+            <v-card class="mx-1" width="180" height="200" elevation="10">
+              <v-card-text>
+                <div class="grey--text">{{ x.brand }}</div>
+                <span class="Heading 6"
+                  ><b>{{ x.category }}</b></span
+                >
+                <br />
+                <span class="grey--text">Remaining Qty:</span>
+                <br />
+                <span class="display-3 mt-n2">{{ x.quantity }}</span>
+                <br />
+                <span class="grey--text">Pcs</span>
+              </v-card-text>
+              <v-card-actions class="d-flex justify-center mt-n6">
+                <v-btn
+                  text
+                  color="blue darken-4"
+                  @click="
+                    (saleModal = true),
+                      (category = x.category),
+                      (selectedCatergory = 'Accessories')
+                  "
+                >
                   Sale
                 </v-btn>
               </v-card-actions>
@@ -227,6 +302,12 @@ export default {
     receivers() {
       return this.$store.state.receivers;
     },
+    lnb() {
+      return this.$store.state.lnb;
+    },
+    Accessories() {
+      return this.$store.state.accessories;
+    },
   },
   methods: {
     Sale() {
@@ -252,6 +333,20 @@ export default {
           quantity: this.quantity,
         };
         this.$store.commit("saleReceivers", receiver);
+      }
+      if (this.selectedCatergory == "LNB") {
+        let lnb = {
+          category: this.category,
+          quantity: this.quantity,
+        };
+        this.$store.commit("saleLnb", lnb);
+      }
+      if (this.selectedCatergory == "Accessories") {
+        let receiver = {
+          category: this.category,
+          quantity: this.quantity,
+        };
+        this.$store.commit("saleAccessories", receiver);
       }
     },
   },

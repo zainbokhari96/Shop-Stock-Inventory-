@@ -54,12 +54,12 @@
           color="#1A237E"
           class="white--text"
           width="200"
-          to="/"
+          to="/lnb"
           >LNB</v-btn
         >
       </v-list-item>
       <v-list-item class="mt-5 d-flex justify-center">
-        <v-btn color="#1A237E" class="white--text" width="200" to="/"
+        <v-btn color="#1A237E" class="white--text" width="200" to="/acessories"
           >Accessories</v-btn
         >
       </v-list-item>

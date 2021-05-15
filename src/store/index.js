@@ -67,7 +67,7 @@ export default new Vuex.Store({
     deleteReceivers(state, data) {
       for (let i = 0; i < state.receivers.length; i++) {
         if (state.receivers[i].category == data) {
-          state.dish.splice(i, 1);
+          state.receivers.splice(i, 1);
         }
       }
     },
@@ -88,8 +88,50 @@ export default new Vuex.Store({
     addNewLnb(state, data) {
       state.lnb.push(data);
     },
-    addNewAcessories(state, data) {
+    deleteLnb(state, data) {
+      for (let i = 0; i < state.lnb.length; i++) {
+        if (state.lnb[i].category == data) {
+          state.lnb.splice(i, 1);
+        }
+      }
+    },
+    saleLnb(state, data) {
+      for (let i = 0; i < state.lnb.length; i++) {
+        if (state.lnb[i].category == data.category) {
+          state.lnb[i].quantity -= data.quantity;
+        }
+      }
+    },
+    restockLnb(state, data) {
+      for (let i = 0; i < state.lnb.length; i++) {
+        if (state.lnb[i].category == data.category) {
+          state.lnb[i].quantity += parseFloat(data.quantity);
+        }
+      }
+    },
+    addNewAccessories(state, data) {
       state.accessories.push(data);
+    },
+    deleteAccessories(state, data) {
+      for (let i = 0; i < state.accessories.length; i++) {
+        if (state.accessories[i].category == data) {
+          state.accessories.splice(i, 1);
+        }
+      }
+    },
+    saleAccessories(state, data) {
+      for (let i = 0; i < state.accessories.length; i++) {
+        if (state.accessories[i].category == data.category) {
+          state.accessories[i].quantity -= data.quantity;
+        }
+      }
+    },
+    restockAccessories(state, data) {
+      for (let i = 0; i < state.accessories.length; i++) {
+        if (state.accessories[i].category == data.category) {
+          state.accessories[i].quantity += parseFloat(data.quantity);
+        }
+      }
     },
   },
   actions: {},

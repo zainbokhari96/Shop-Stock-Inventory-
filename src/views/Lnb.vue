@@ -13,7 +13,7 @@
         <v-row class="pt-3" style="background: #1a237e">
           <v-col class="white--text THIN"> Zeeshan Satellite Lahore </v-col>
         </v-row>
-        <!-- Receivers -->
+        <!-- LNB -->
         <v-row>
           <v-col class="d-flex justify-end">
             <v-btn
@@ -22,7 +22,7 @@
               class="white--text"
               elevation="2"
             >
-              + Add New Receivers</v-btn
+              + Add New LNB</v-btn
             >
           </v-col>
         </v-row>
@@ -32,7 +32,7 @@
             class="d-flex justify-center text--primary"
             style="background: #cddc39"
           >
-            HD Receivers Stock:
+            LNB Stock:
             <span class="ml-auto"
               ><v-btn
                 small
@@ -49,10 +49,10 @@
           <v-col
             class="d-flex justify-center"
             cols="2"
-            v-for="x in receivers"
+            v-for="x in lnb"
             :key="x.category"
           >
-            <v-card class="mx-1" width="180" height="200" elevation="10">
+            <v-card class="mx-1" width="180" height="max-content" elevation="10">
               <v-card-text>
                 <div class="grey--text">{{ x.brand }}</div>
                 <span class="Heading 6"
@@ -173,7 +173,7 @@
       </v-card>
     </v-dialog>
 
-    <!-- Add New Receivers Modal -->
+    <!-- Add New LNB Modal -->
     <v-dialog v-model="addNewModal" width="400">
       <v-card>
         <v-card-title class="headline lighten-2">
@@ -220,7 +220,7 @@
           <v-btn
             color="primary"
             text
-            @click="(addNewModal = false), addNewReceiver()"
+            @click="(addNewModal = false), addNewLnb()"
           >
             Add New</v-btn
           >
@@ -238,7 +238,7 @@
         <v-row class="mt-5 mx-5">
           <v-col>
             <v-select
-              :items="receivers"
+              :items="lnb"
               item-text="category"
               outlined
               label="Category"
@@ -254,7 +254,7 @@
           <v-btn
             color="error"
             text
-            @click="(deleteModal = false), deletedReceiver()"
+            @click="(deleteModal = false), deletedLnb()"
           >
             Delete
           </v-btn>
@@ -267,7 +267,7 @@
 <script>
 import Navbar from "@/views/Navbar";
 export default {
-  name: "Receivers",
+  name: "LNB",
   components: {
     Navbar,
   },
@@ -284,35 +284,35 @@ export default {
     };
   },
   computed: {
-    receivers() {
-      return this.$store.state.receivers;
+    lnb() {
+      return this.$store.state.lnb;
     },
   },
   methods: {
-    addNewReceiver() {
-      let Receivers = {
+    addNewLnb() {
+      let lnb = {
         brand: this.brand,
         category: this.category,
         quantity: parseFloat(this.quantity),
       };
-      this.$store.commit("addNewReceivers", Receivers);
+      this.$store.commit("addNewLnb", lnb);
     },
-    deletedReceiver() {
-      this.$store.commit("deleteReceivers", this.deletedCategory);
+    deletedLnb() {
+      this.$store.commit("deleteLnb", this.deletedCategory);
     },
     sale() {
-      let receiver = {
+      let lnb = {
         category: this.category,
         quantity: this.quantity,
       };
-      this.$store.commit("saleReceivers", receiver);
+      this.$store.commit("saleLnb", lnb);
     },
     add() {
-      let receiver = {
+      let lnb = {
         category: this.category,
         quantity: this.quantity,
       };
-      this.$store.commit("restockReceivers", receiver);
+      this.$store.commit("restockLnb", lnb);
     },
   },
 };
