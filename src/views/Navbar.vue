@@ -85,7 +85,7 @@
 export default {
   data() {
     return {
-      image: require("@/assets/logo.png"),
+      image: require("@/assets/logo.jpg"),
     };
   },
 };
