@@ -245,6 +245,7 @@
           <v-col>
             <v-text-field
               label="Item"
+              autocomplete="off"
               outlined
               dense
               v-model="category"

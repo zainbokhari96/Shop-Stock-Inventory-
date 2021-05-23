@@ -179,6 +179,7 @@
           <v-col>
             <v-text-field
               label="Item"
+              autocomplete="off"
               outlined
               dense
               v-model="category"
@@ -190,6 +191,7 @@
           <v-col>
             <v-text-field
               label="Quantity"
+              autocomplete="off"
               outlined
               dense
               v-model="quantity"
@@ -217,6 +219,7 @@
           <v-col>
             <v-text-field
               label="Item"
+              autocomplete="off"
               outlined
               dense
               v-model="category"
@@ -228,6 +231,7 @@
           <v-col>
             <v-text-field
               label="Quantity"
+              autocomplete="off"
               outlined
               dense
               v-model="quantity"
@@ -257,6 +261,7 @@
           <v-col>
             <v-text-field
               label="Brand"
+              autocomplete="off"
               outlined
               dense
               v-model="brand"
@@ -268,6 +273,7 @@
           <v-col>
             <v-text-field
               label="Category"
+              autocomplete="off"
               outlined
               dense
               v-model="category"
@@ -289,6 +295,7 @@
           <v-col>
             <v-text-field
               label="Quantity"
+              autocomplete="off"
               outlined
               dense
               v-model="quantity"

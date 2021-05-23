@@ -11,8 +11,12 @@ export default new Vuex.Store({
     receivers: [],
     lnb: [],
     accessories: [],
+    reports : []
   },
   mutations: {
+    addNewReport(state , data) {
+      state.reports.push(data);
+    },
     addNewDish(state, data) {
       state.dish.push(data);
     },
@@ -37,6 +41,7 @@ export default new Vuex.Store({
       for (let i = 0; i < state.dish.length; i++) {
         if (state.dish[i].category == data.category) {
           state.dish[i].quantity -= data.quantity;
+          this.commit.addNewReport(data);
         }
       }
     },
@@ -44,6 +49,7 @@ export default new Vuex.Store({
       for (let i = 0; i < state.dishFiber.length; i++) {
         if (state.dishFiber[i].category == data.category) {
           state.dishFiber[i].quantity -= data.quantity;
+          this.commit.addNewReport(data);
         }
       }
     },
@@ -75,6 +81,7 @@ export default new Vuex.Store({
       for (let i = 0; i < state.receivers.length; i++) {
         if (state.receivers[i].category == data.category) {
           state.receivers[i].quantity -= data.quantity;
+          this.commit.addNewReport(data);
         }
       }
     },
@@ -99,6 +106,7 @@ export default new Vuex.Store({
       for (let i = 0; i < state.lnb.length; i++) {
         if (state.lnb[i].category == data.category) {
           state.lnb[i].quantity -= data.quantity;
+          this.commit.addNewReport(data);
         }
       }
     },
@@ -123,6 +131,7 @@ export default new Vuex.Store({
       for (let i = 0; i < state.accessories.length; i++) {
         if (state.accessories[i].category == data.category) {
           state.accessories[i].quantity -= data.quantity;
+          this.commit.addNewReport(data);
         }
       }
     },
