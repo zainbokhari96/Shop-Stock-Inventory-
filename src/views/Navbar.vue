@@ -3,7 +3,6 @@
     absolute
     permanent
     left
-    color="cyan lighten-5"
     class="text-white"
   >
     <template v-slot:prepend>
@@ -73,7 +72,7 @@
           color="#1A237E"
           class="white--text"
           width="200"
-          to="/"
+          @click="logout()"
           >Logout</v-btn
         >
       </v-list-item>
@@ -88,6 +87,12 @@ export default {
       image: require("@/assets/logo.jpg"),
     };
   },
+  methods : {
+    logout() {
+      localStorage.removeItem("token");
+      this.$router.push({path:"/"})
+    }
+  }
 };
 </script>
 

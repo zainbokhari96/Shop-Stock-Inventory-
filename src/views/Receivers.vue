@@ -1,5 +1,5 @@
 <template>
-  <v-app style="background: #fafafa">
+  <v-app>
     <v-row>
       <v-col cols="2">
         <Navbar />

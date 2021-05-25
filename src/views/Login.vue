@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <v-app>
-      <v-row class="d-flex justify-center mt-5">
-        <v-card class="mt-10" width="500" height="500" elevation="10">
+    <v-app style="background: whitesmoke;">
+      <v-row class="d-flex justify-center mt-12">
+        <v-card class="mt-10" width="380" height="450" elevation="16">
           <div>
             <img :src="imgsrc" width="200" height="150" />
           </div>
@@ -13,6 +13,7 @@
           <v-text-field
             class="mx-auto px-2 mt-10"
             v-model="username"
+            dense
             outlined
             autocomplete="off"
             label="User Name"
@@ -20,6 +21,7 @@
           ></v-text-field>
           <v-text-field
             v-model="password"
+            dense
             class="mx-auto px-2 mt-2"
             autocomplete="off"
             outlined
