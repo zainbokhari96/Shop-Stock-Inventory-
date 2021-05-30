@@ -29,8 +29,8 @@
      
         <v-row>
           <v-col
-            class="d-flex justify-center text--primary"
-            style="background: #cddc39"
+             class="d-flex justify-center white--text"
+            style="background:linear-gradient(271deg, #1a237e, #ffe9e9)"
           >
             HD Receivers Stock:
             <span class="ml-auto"

@@ -54,7 +54,7 @@ export default {
       if(this.username == 'zeeshan' && this.password == 'zeesat98')
       {
         localStorage.setItem("token", true);
-        this.$router.push({ name: 'dashboard' })
+        this.$router.push({ path: '/Dashboard' })
       }
       else {
         alert("Invalid Email And Password");

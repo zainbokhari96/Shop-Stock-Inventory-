@@ -16,8 +16,8 @@
         <!-- Dishes -->
         <v-row>
           <v-col
-            class="d-flex justify-center text--primary mt-2"
-            style="background: #cddc39"
+             class="d-flex justify-center white--text"
+            style="background:linear-gradient(271deg, #1a237e, #ffe9e9)"
           >
             Dish Stock:</v-col
           >
@@ -61,8 +61,8 @@
         <!-- Fiber -->
         <v-row>
           <v-col
-            class="d-flex justify-center text--primary"
-            style="background: #cddc39"
+             class="d-flex justify-center white--text"
+            style="background:linear-gradient(271deg, #1a237e, #ffe9e9)"
           >
             Fiber Stock:</v-col
           >
@@ -106,7 +106,8 @@
 
         <!-- Receiver -->
         <v-row>
-          <v-col class="d-flex justify-center" style="background: #cddc39">
+          <v-col  class="d-flex justify-center white--text"
+            style="background:linear-gradient(271deg, #1a237e, #ffe9e9)">
             HD Receiver Stock:</v-col
           >
         </v-row>
@@ -149,8 +150,8 @@
         <!-- LNB's -->
         <v-row>
           <v-col
-            class="d-flex justify-center text--primary"
-            style="background: #cddc39"
+            class="d-flex justify-center white--text"
+            style="background:linear-gradient(271deg, #1a237e, #ffe9e9)"
           >
             LNB:</v-col
           >
@@ -194,8 +195,8 @@
         <!-- Accessories's -->
         <v-row>
           <v-col
-            class="d-flex justify-center text--primary"
-            style="background: #cddc39"
+            class="d-flex justify-center white--text"
+            style="background:linear-gradient(271deg, #1a237e, #ffe9e9)"
           >
             Accessories:</v-col
           >
@@ -260,7 +261,7 @@
               outlined
               dense
               v-model="quantity"
-              auto-complete="off"
+              autocomplete="off"
             ></v-text-field>
           </v-col>
         </v-row>
